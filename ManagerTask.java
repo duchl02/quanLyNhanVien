@@ -50,6 +50,5 @@ public class ManagerTask {
     }
     public void show() {
         this.tasks.forEach(p -> System.out.println(p.toString()));
-//        this.staffs.get(0).showProject();
     }
 }

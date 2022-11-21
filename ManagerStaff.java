@@ -70,6 +70,5 @@ public class ManagerStaff {
 
     public void show() {
         this.staffs.forEach(p -> System.out.println(p.toString()));
-//        this.staffs.get(0).showProject();
     }
 }

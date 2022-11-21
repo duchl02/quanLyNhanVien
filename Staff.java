@@ -20,9 +20,7 @@ public class Staff {
         this.name = name;
         this.age = age;
         this.id = id;
-//        this.project.add(project);
         this.address = address;
-//        this.task = task;
         this.position = position;
         this.birthDate = birthDate;
     }
