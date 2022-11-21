@@ -11,7 +11,7 @@ public class Task {
 
     protected String taskNAme;
 
-    public Task(String id, String taskNAme,String timeDo, String status, String description, Staff staff, Project project){
+    public Task(String id, String taskNAme,String description,  String timeDo , String status, Staff staff,Project project){
         this.id = id;
         this.timeDo = timeDo;
         this.status = status;

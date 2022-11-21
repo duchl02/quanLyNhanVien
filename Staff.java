@@ -10,7 +10,7 @@ public class Staff {
     private String id;
     private List<Project> project = new ArrayList<>();
 
-    private List<Task> task;
+    private List<Task> task = new ArrayList<>();
     private String address;
 
     private String position;
@@ -80,7 +80,7 @@ public class Staff {
         this.address = address;
     }
     public List<Project> getProject() {
-        return project;
+        return this.project;
     }
 
     public void setProject(List<Project> project) {

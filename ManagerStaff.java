@@ -15,7 +15,6 @@ public class ManagerStaff {
 
     public void add(Staff staff) {
         this.staffs.add(staff);
-
     }
 
     public boolean delete(String id) {

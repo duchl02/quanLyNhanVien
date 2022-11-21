@@ -16,8 +16,6 @@ public class Project {
         this.projectName = projectName;
         this.id = id;
         this.description = description;
-//        this.staff = staff;
-//        this.task = task;
     }
 
     public String getProjectName() {
@@ -58,26 +56,13 @@ public class Project {
     public void addTask(Task task){
         this.task.add(task);
     }
-//    public String toString() {
-////        Staff currentStaff;
-////        if (staff != null){
-////            currentStaff = staff;
-////        } else {
-////            currentStaff=null;
-////        }
-////        Task currentTask;
-////        if (task != null){
-////            currentTask = task;
-////        } else {
-////            currentTask = null;
-////        }
-//        return "Dự án{" +
-//                "id='" + id + '\'' +
-//                "tên dự án='" + projectName + '\'' +
-//                ", mô tả=" + description +
-//                ", nhân viên='" + staff + '\'' +  ", Task"+ task +
-//                '}';
-//    }
+   public String toString() {
+       return "Dự án{" +
+               "id='" + id + '\'' +
+               "tên dự án='" + projectName + '\'' +
+               ", mô tả=" + description +
+               '}';
+   }
 public String showProject(){
     return "Dự án{" +
                 "id='" + id + '\'' +

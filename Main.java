@@ -40,7 +40,7 @@ public class Main {
                     String address = scanner.nextLine();
                     System.out.print("Nhập ngày sinh: ");
                     String birthDate = scanner.nextLine();
-                    System.out.print("Nhập vị trí(s1 = nhân viên , s2 = phó phòng ,s3 = trưởng phòng ");
+                    System.out.print("Nhập vị trí(s1 = nhân viên , s2 = phó phòng ,s3 = trưởng phòng):");
                     String position = scanner.nextLine();
                     Staff staff = new Staff(id, name, age, address, birthDate, position, null, null);
                     managerStaff.add(staff);
@@ -60,7 +60,7 @@ public class Main {
                         String address = scanner.nextLine();
                         System.out.print("Nhập ngày sinh: ");
                         String birthDate = scanner.nextLine();
-                        System.out.print("Nhập vị trí(s1 = nhân viên , s2 = phó phòng ,s3 = trưởng phòng ");
+                        System.out.print("Nhập vị trí(s1 = nhân viên , s2 = phó phòng ,s3 = trưởng phòng) ");
                         String position = scanner.nextLine();
                         if (managerStaff.editStaffById(id, name, age, address, birthDate, position, null, null)){
                             System.out.println("Sửa nhân viên thành công!");
@@ -143,13 +143,16 @@ public class Main {
                     String staffId = scanner.nextLine();
 
                     if (managerStaff.checkStaffById(staffId)) {
-                        System.out.println("Nhập id dự án ");
+                        System.out.println("Nhập id dự án nhân viên được giao ");
+                        Staff staff = managerStaff.searchStaffById(staffId);
+                        System.out.println(staff.getProject());
                         String projectId = scanner.nextLine();
                         if (managerProject.checkProjectById(projectId)){
-                            Staff staff = managerStaff.searchStaffById(staffId);
                             Project project = managerProject.searchProjectById(projectId);
                             Task task = new Task(id,taskName,description,timeDo,status,staff,project);
                             managerTask.add(task);
+                            project.addTask(task);
+                            staff.addTask(task);
                             System.out.println("Thêm thành công!");
                         }else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
@@ -188,7 +191,6 @@ public class Main {
                         }else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
                         }
-
                     break;
                 }
                 case "12":{
@@ -200,6 +202,7 @@ public class Main {
                     }else {
                         System.out.println("Không tìm thấy Id nhân viên, xin hãy thử lại.");
                     }
+                    break;
                 }
                 case "13":{
                     System.out.println("Nhập id nhân viên:");
@@ -210,6 +213,7 @@ public class Main {
                     }else {
                         System.out.println("Không tìm thấy Id nhân viên, xin hãy thử lại.");
                     }
+                    break;
                 }
                 case "14": {
                     System.out.print("Nhập id: ");
