@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Project {
     protected String projectName;
-    protected String id;
+    protected Integer id;
 
     protected String description;
     protected List<Staff> staff = new ArrayList<>();
 
     protected List<Task> task = new ArrayList<>();
 
-    public Project(String id,String projectName,String description, Staff staff, Task task ) {
+    public Project(Integer id,String projectName,String description, Staff staff, Task task ) {
         this.projectName = projectName;
         this.id = id;
         this.description = description;
@@ -26,11 +26,11 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -45,10 +45,6 @@ public class Project {
     public List<Staff> getStaff(){
         return this.staff;
     }
-//
-//    public void setStaff(Staff staff){
-//        this.staff = staff;
-//    }
 
     public void addStaff(Staff staff){
         this.staff.add(staff);

@@ -1,7 +1,8 @@
 package quanLyNhanVien;
 
-import java.util.List;
 import java.util.Scanner;
+
+
 
 public class Main {
     public static void main(String[] args) {
@@ -62,7 +63,8 @@ public class Main {
                         String birthDate = scanner.nextLine();
                         System.out.print("Nhập vị trí(s1 = nhân viên , s2 = phó phòng ,s3 = trưởng phòng) ");
                         String position = scanner.nextLine();
-                        if (managerStaff.editStaffById(id, name, age, address, birthDate, position, null, null)){
+                        editStaffObj obj = new editStaffObj(id, name, age, address, birthDate, position, null, null);
+                        if (managerStaff.editStaffById(obj)){
                             System.out.println("Sửa nhân viên thành công!");
                         } else {
                             System.out.println("Đã có lỗi xảy ra!");
@@ -93,13 +95,14 @@ public class Main {
                 }
                 case "5": {
                     System.out.print("Nhập id: ");
-                    String id = scanner.nextLine();
+                    Integer id = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.print("Nhập tên dự án: ");
                     String name = scanner.nextLine();
                     System.out.print("Nhập mô tả: ");
                     String description = scanner.nextLine();
                     Project project = new Project(id,name,description,null,null);
-                    managerProject.add(project);
+                    managerProject.add(project,id);
                     System.out.println(project.showProject());
                     break;
                 }
@@ -113,15 +116,18 @@ public class Main {
 
                     if (managerStaff.checkStaffById(staffId)) {
                         System.out.println("Nhập id dự án ");
-                        String projectId = scanner.nextLine();
+                        Integer projectId = scanner.nextInt();
                         if (managerProject.checkProjectById(projectId)){
                             Staff staff = managerStaff.searchStaffById(staffId);
                             Project project = managerProject.searchProjectById(projectId);
                             staff.addProject(project);
+                            System.out.println(project);
                             project.addStaff(staff);
                             System.out.println("Thêm thành công!");
+                            break;
                         }else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
+                            break;
                         }
                     } else {
                         System.out.println("Không tìm thấy Id nhân viên, xin hãy thử lại.");
@@ -146,7 +152,7 @@ public class Main {
                         System.out.println("Nhập id dự án nhân viên được giao ");
                         Staff staff = managerStaff.searchStaffById(staffId);
                         System.out.println(staff.getProject());
-                        String projectId = scanner.nextLine();
+                        Integer projectId = scanner.nextInt();
                         if (managerProject.checkProjectById(projectId)){
                             Project project = managerProject.searchProjectById(projectId);
                             Task task = new Task(id,taskName,description,timeDo,status,staff,project);
@@ -154,6 +160,7 @@ public class Main {
                             project.addTask(task);
                             staff.addTask(task);
                             System.out.println("Thêm thành công!");
+                            break;
                         }else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
                         }
@@ -184,10 +191,11 @@ public class Main {
                 }
                 case "11": {
                         System.out.println("Nhập id dự án ");
-                        String projectId = scanner.nextLine();
+                        Integer projectId = scanner.nextInt();
                         if (managerProject.checkProjectById(projectId)){
                             Project project = managerProject.searchProjectById(projectId);
                             System.out.println(project.getStaff());
+                            break;
                         }else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
                         }
