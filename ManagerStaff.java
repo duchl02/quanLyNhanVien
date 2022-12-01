@@ -1,8 +1,6 @@
 package quanLyNhanVien;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 class editStaffObj {
     String id;
@@ -61,18 +59,15 @@ public class ManagerStaff {
     public Staff searchStaffById(String id) {
         sortStaffById();
         Staff currentStaff = null;
-        int size = staffs.size();
         int index = Integer.parseInt(id);
-        for (int i = 0; i < size; i++) {
-            if (staffs.get(i).getId().equals(id)) {
-                currentStaff = staffs.get(i);
-                break;
-            }
-        }
-
         BinarySearch ob = new BinarySearch();
         int result = ob.binarySearch(sortedStaffId, index);
-        System.out.println(result);
+        if (result == -1)
+            System.out.println("Không tìm thấy nhấn viên nào");
+
+        else {
+            currentStaff = sortedStaff.get(result);
+        }
         return currentStaff;
     }
 

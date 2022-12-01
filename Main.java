@@ -26,15 +26,11 @@ public class Main {
             System.out.println("Nhấn 13 xem task theo nhân viên");
             System.out.println("Nhấn 14 tìm nhân viên theo id");
             System.out.println("Nhấn 15 xem task theo trạng thái");
+            System.out.println("Nhấn 16 để xem nhân viên đã sắp xếp bằng id");
             System.out.println("Nhấn x để thoát");
             String line = scanner.nextLine();
             switch (line) {
-                case "a": {
-                    System.out.print("Nhập id: ");
-                    String id = scanner.nextLine();
-                    managerStaff.searchStaffById(id);
-                    break;
-                }
+
                 case "1": {
                     System.out.print("Nhập id: ");
                     String id = scanner.nextLine();
@@ -244,6 +240,10 @@ public class Main {
                     System.out.println("Nhập trạng thái(s1 = coding,s2 = test,s3 = done):");
                     String status = scanner.nextLine();
                     managerTask.filterByStatus(status);
+                    break;
+                }
+                case "16":{
+                    managerStaff.sortStaffById().forEach(p -> System.out.println(p.toString()));
                     break;
                 }
                 case "x":
