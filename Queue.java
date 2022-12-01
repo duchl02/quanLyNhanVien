@@ -40,8 +40,8 @@ public class Queue<T> {
   public T poll() {
     T value = null;
     try {
-      value = queueArray.get(size - 1);
-      queueArray.remove(size - 1);
+      value = queueArray.get(0);
+      queueArray.remove(0);
     } catch (ArithmeticException e) {
       return null;
     }

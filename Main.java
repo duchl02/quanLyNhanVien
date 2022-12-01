@@ -26,7 +26,7 @@ public class Main {
             System.out.println("Nhấn 15 xem task theo trạng thái");
             System.out.println("Nhấn 16 để xem nhân viên đã sắp xếp bằng id");
             System.out.println("Nhấn 17 để xem nhân viên đã sắp xếp bằng tên");
-            System.out.println("Nhấn 18  tìm nhân viên theo tên");
+            System.out.println("Nhấn 18 tìm nhân viên theo tên");
             System.out.println("Nhấn x để thoát");
             String line = scanner.nextLine();
             switch (line) {
