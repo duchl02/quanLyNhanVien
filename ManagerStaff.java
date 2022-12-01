@@ -1,6 +1,7 @@
 package quanLyNhanVien;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 class editStaffObj {
     String id;
@@ -119,6 +120,23 @@ public class ManagerStaff {
         }
         sortedStaffId = listID;
         sortedStaff = currentStaff;
+        return currentStaff;
+    }
+    
+    public void sortStaffByName(){
+        sortStaffById();
+        sortedStaff.stream().sorted((p1, p2) -> p1.getName().compareTo(p2.getName())).forEach(p -> System.out.printf("%s%n", p));
+    }
+    
+    public ArrayList<Staff> searchStaffByName(String name){ 
+        int size = staffs.size();
+        ArrayList<Staff> currentStaff = new ArrayList<Staff>();
+
+        for (int i = 0; i < size; i++) {
+            if (staffs.get(i).getName().contains(name)) {
+                currentStaff.add(staffs.get(i));
+            }
+        }
         return currentStaff;
     }
 

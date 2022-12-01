@@ -2,8 +2,6 @@ package quanLyNhanVien;
 
 import java.util.Scanner;
 
-
-
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -27,10 +25,11 @@ public class Main {
             System.out.println("Nhấn 14 tìm nhân viên theo id");
             System.out.println("Nhấn 15 xem task theo trạng thái");
             System.out.println("Nhấn 16 để xem nhân viên đã sắp xếp bằng id");
+            System.out.println("Nhấn 17 để xem nhân viên đã sắp xếp bằng tên");
+            System.out.println("Nhấn 18  tìm nhân viên theo tên");
             System.out.println("Nhấn x để thoát");
             String line = scanner.nextLine();
             switch (line) {
-
                 case "1": {
                     System.out.print("Nhập id: ");
                     String id = scanner.nextLine();
@@ -66,7 +65,7 @@ public class Main {
                         System.out.print("Nhập vị trí(s1 = nhân viên , s2 = phó phòng ,s3 = trưởng phòng) ");
                         String position = scanner.nextLine();
                         editStaffObj obj = new editStaffObj(id, name, age, address, birthDate, position, null, null);
-                        if (managerStaff.editStaffById(obj)){
+                        if (managerStaff.editStaffById(obj)) {
                             System.out.println("Sửa nhân viên thành công!");
                         } else {
                             System.out.println("Đã có lỗi xảy ra!");
@@ -81,9 +80,9 @@ public class Main {
                     System.out.print("Nhập id: ");
                     String id = scanner.nextLine();
                     if (managerStaff.checkStaffById(id)) {
-                        if (managerStaff.delete(id)){
+                        if (managerStaff.delete(id)) {
                             System.out.println("Xóa nhân viên thành công!");
-                        } else{
+                        } else {
                             System.out.println("Đã có lỗi xảy ra!");
                         }
                     } else {
@@ -103,8 +102,8 @@ public class Main {
                     String name = scanner.nextLine();
                     System.out.print("Nhập mô tả: ");
                     String description = scanner.nextLine();
-                    Project project = new Project(id,name,description,null,null);
-                    managerProject.add(project,id);
+                    Project project = new Project(id, name, description, null, null);
+                    managerProject.add(project, id);
                     System.out.println(project.showProject());
                     break;
                 }
@@ -119,7 +118,7 @@ public class Main {
                     if (managerStaff.checkStaffById(staffId)) {
                         System.out.println("Nhập id dự án ");
                         Integer projectId = scanner.nextInt();
-                        if (managerProject.checkProjectById(projectId)){
+                        if (managerProject.checkProjectById(projectId)) {
                             Staff staff = managerStaff.searchStaffById(staffId);
                             Project project = managerProject.searchProjectById(projectId);
                             staff.addProject(project);
@@ -127,7 +126,7 @@ public class Main {
                             project.addStaff(staff);
                             System.out.println("Thêm thành công!");
                             break;
-                        }else {
+                        } else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
                             break;
                         }
@@ -155,15 +154,15 @@ public class Main {
                         Staff staff = managerStaff.searchStaffById(staffId);
                         System.out.println(staff.getProject());
                         Integer projectId = scanner.nextInt();
-                        if (managerProject.checkProjectById(projectId)){
+                        if (managerProject.checkProjectById(projectId)) {
                             Project project = managerProject.searchProjectById(projectId);
-                            Task task = new Task(id,taskName,description,timeDo,status,staff,project);
+                            Task task = new Task(id, taskName, description, timeDo, status, staff, project);
                             managerTask.add(task);
                             project.addTask(task);
                             staff.addTask(task);
                             System.out.println("Thêm thành công!");
                             break;
-                        }else {
+                        } else {
                             System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
                         }
                     } else {
@@ -171,18 +170,17 @@ public class Main {
                     }
                     break;
                 }
-                case "9":{
+                case "9": {
                     System.out.println("Nhập id task");
                     String id = scanner.nextLine();
-                    if(managerTask.checkTaskById(id)){
+                    if (managerTask.checkTaskById(id)) {
                         Task task = managerTask.searchTaskById(id);
                         System.out.println(task);
                         System.out.println("Nhập trạng thái(s1 = coding,s2 = test,s3 = done):");
                         String status = scanner.nextLine();
                         task.setStatus(status);
                         System.out.println("Sửa trạng thái thành công");
-                    }
-                    else {
+                    } else {
                         System.out.println("Không tìm thấy id task");
                     }
                     break;
@@ -192,35 +190,35 @@ public class Main {
                     break;
                 }
                 case "11": {
-                        System.out.println("Nhập id dự án ");
-                        Integer projectId = scanner.nextInt();
-                        if (managerProject.checkProjectById(projectId)){
-                            Project project = managerProject.searchProjectById(projectId);
-                            System.out.println(project.getStaff());
-                            break;
-                        }else {
-                            System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
-                        }
+                    System.out.println("Nhập id dự án ");
+                    Integer projectId = scanner.nextInt();
+                    if (managerProject.checkProjectById(projectId)) {
+                        Project project = managerProject.searchProjectById(projectId);
+                        System.out.println(project.getStaff());
+                        break;
+                    } else {
+                        System.out.println("Không tìm thấy Id dự án, xin hãy thử lại.");
+                    }
                     break;
                 }
-                case "12":{
+                case "12": {
                     System.out.println("Nhập id nhân viên:");
                     String staffId = scanner.nextLine();
-                    if (managerStaff.checkStaffById(staffId)){
+                    if (managerStaff.checkStaffById(staffId)) {
                         Staff staff = managerStaff.searchStaffById(staffId);
                         System.out.println(staff.getProject());
-                    }else {
+                    } else {
                         System.out.println("Không tìm thấy Id nhân viên, xin hãy thử lại.");
                     }
                     break;
                 }
-                case "13":{
+                case "13": {
                     System.out.println("Nhập id nhân viên:");
                     String staffId = scanner.nextLine();
-                    if (managerStaff.checkStaffById(staffId)){
+                    if (managerStaff.checkStaffById(staffId)) {
                         Staff staff = managerStaff.searchStaffById(staffId);
                         System.out.println(staff.getTasks());
-                    }else {
+                    } else {
                         System.out.println("Không tìm thấy Id nhân viên, xin hãy thử lại.");
                     }
                     break;
@@ -242,8 +240,18 @@ public class Main {
                     managerTask.filterByStatus(status);
                     break;
                 }
-                case "16":{
+                case "16": {
                     managerStaff.sortStaffById().forEach(p -> System.out.println(p.toString()));
+                    break;
+                }
+                case "17":{
+                    managerStaff.sortStaffByName();
+                    break;
+                }
+                case "18":{
+                    System.out.print("Nhập tên: ");
+                    String name = scanner.nextLine();
+                    System.out.println(managerStaff.searchStaffByName(name).toString());
                     break;
                 }
                 case "x":
