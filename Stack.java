@@ -39,8 +39,6 @@ public class Stack<T> {
     return stackArray.get(size - 1);
   }
 
-
-
   public void delete(int index) {
     try {
       stackArray.remove(index);
@@ -50,7 +48,7 @@ public class Stack<T> {
     }
   }
 
-  
+
   public Boolean isEmpty() {
     return stackArray.size() == 0;
   }

@@ -29,6 +29,12 @@ public class Main {
             System.out.println("Nhấn x để thoát");
             String line = scanner.nextLine();
             switch (line) {
+                case "a": {
+                    System.out.print("Nhập id: ");
+                    String id = scanner.nextLine();
+                    managerStaff.searchStaffById(id);
+                    break;
+                }
                 case "1": {
                     System.out.print("Nhập id: ");
                     String id = scanner.nextLine();
