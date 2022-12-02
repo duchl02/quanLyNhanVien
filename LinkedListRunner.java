@@ -8,6 +8,18 @@ public class LinkedListRunner {
         customLinkedList.add(15);
         customLinkedList.add(20);
 
-        customLinkedList.display();
+        // customLinkedList.display();
+
+        // customLinkedList.insertAt(2, 100);
+        // System.out.println("********");
+        // customLinkedList.display();
+
+        // System.out.println("********");
+        // customLinkedList.deleteNodeAt(2);
+        // customLinkedList.display();
+
+        // System.out.println("********");
+        // customLinkedList.getNodeAt(2);
+
     }
 }
