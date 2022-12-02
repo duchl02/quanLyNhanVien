@@ -35,6 +35,8 @@ public class CustomQueue<E> {
             newNode.setData(data);
         }
     }
+
+    
     private Node<E> findLastNode(Node<E> currentNode) {
         if (currentNode.getNextNode() != null) {
             currentNode = findLastNode(currentNode.getNextNode());
