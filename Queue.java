@@ -28,7 +28,6 @@ public class Queue<T> {
     return value;
   }
 
-
   public T peek() {
     size = queueArray.size();
     if (size == 0) {

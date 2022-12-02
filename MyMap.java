@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import static java.util.Objects.requireNonNull;
 
 public class MyMap<K, V> implements Map<K, V> {
-
     private ArrayList<MyEntry<K, V>>[] table;
     private final int defaultSize = 10;
     private int size = 0;

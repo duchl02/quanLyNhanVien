@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class Stack<T> {
-
   private int size = 0;
   ArrayList<T> stackArray = new ArrayList<T>();
-
   public void push(T element) {
     stackArray.add(element);
   }

@@ -2,7 +2,7 @@ package quanLyNhanVien;
 public class LinkedListRunner {
 
     public static void main(String [] args){
-        CustomLinkedList<Integer> customLinkedList = new CustomLinkedList<Integer>();
+        CustomQueue<Integer> customLinkedList = new CustomQueue<Integer>();
         customLinkedList.add(5);
         customLinkedList.add(10);
         customLinkedList.add(15);
@@ -14,9 +14,9 @@ public class LinkedListRunner {
         // System.out.println("********");
         // customLinkedList.display();
 
-        // System.out.println("********");
-        // customLinkedList.deleteNodeAt(2);
-        // customLinkedList.display();
+        System.out.println("********");
+        // System.out.println(customLinkedList.remove()+ "xx");
+        customLinkedList.display();
 
         // System.out.println("********");
         // customLinkedList.getNodeAt(2);
