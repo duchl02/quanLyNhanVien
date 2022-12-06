@@ -2,6 +2,7 @@ package quanLyNhanVien;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
+import static java.util.Objects.requireNonNull;
 
 public class CustomMap<K, V> {
     private class Node<K, V> {
@@ -57,6 +58,7 @@ public class CustomMap<K, V> {
     public CustomMap() {
 
     }
+
     public void add(K key, V value) throws NoSuchElementException {
         Node<K, V> newNode = new Node<K, V>();
         if (this.node == null) {
@@ -64,35 +66,27 @@ public class CustomMap<K, V> {
             newNode.setKey(key);
             newNode.setValue(value);
         } else {
-            if (!checkKeyExisted(key)) {
-                Node<K, V> currentNode = node;
-                System.out.println("Check currentNode: " + currentNode);
-                while (currentNode.getPrev() != null) {
-                    currentNode = currentNode.getPrev();
-                }
-                currentNode.setPrev(node);
+            if (checkKeyExisted(key)) {
                 newNode.setKey(key);
                 newNode.setValue(value);
-                System.out.println("check node new node" + newNode);
-            System.out.println("Check currentNode after : " + currentNode);
-
+                newNode.setPrev(node);
+                node = newNode;
             }
-
         }
     }
 
     public boolean checkKeyExisted(K key) {
-        boolean result = false;
-        for (Node<K, V> n = node; n != null; n = n.prev) {
-            if (key == n.getKey()) {
-                result = true;
+        boolean result = true;
+        for (Node<K, V> currentNode = node; currentNode != null; currentNode = currentNode.prev) {
+            if (key == currentNode.getKey()) {
+                result = false;
             }
         }
         return result;
     }
 
     public V get(K key) {
-        for (Node<K, V> n = node; node != null; n = n.prev) {
+        for (Node<K, V> currentNode = node; currentNode != null; currentNode = currentNode.prev) {
             if (key.equals(n.key)) {
                 System.out.println(n.value);
                 return (V) n.value;
@@ -102,15 +96,15 @@ public class CustomMap<K, V> {
     }
 
     V remove(K key) {
-
-        for (Node<K, V> n = node; node != null; n = node.prev) {
-            if (n.prev != null && n.prev.key == key) {
-                n.prev = n.prev.prev;
-                return (V) n.prev;
+        requireNonNull(node);
+        for (Node<K, V> currentNode = node; currentNode != null; currentNode = currentNode.prev) {
+            if (currentNode.prev != null && currentNode.prev.key == key) {
+                currentNode.prev = currentNode.prev.prev;
+                return (V) currentNode.prev;
             }
-            if (n.prev == null && n.key == key) {
+            if (currentNode.prev == null && currentNode.key == key) {
                 node = null;
-                return (V) n;
+                return (V) currentNode;
             }
         }
         return null;
@@ -121,10 +115,9 @@ public class CustomMap<K, V> {
         return node + " ";
     }
 
-
     public void display() {
         if (node != null) {
-            Node<K,V> currentNode = node;
+            Node<K, V> currentNode = node;
             System.out.println(node.getValue());
             while (currentNode.getPrev() != null) {
                 currentNode = currentNode.getPrev();
@@ -132,16 +125,17 @@ public class CustomMap<K, V> {
             }
         }
     }
+
     public static void main(String[] args) {
         CustomMap<Integer, String> map = new CustomMap<>();
         map.add(1, "111");
         map.add(2, "222");
         map.add(3, "333");
         // map.get(1);
-        // map.remove(2);
-       map.display();
+        map.remove(2);
+        // map.display();
         // map.remove(1);
-        // System.out.println(map);
+        System.out.println(map);
         // map.remove(1);
         // System.out.println(map);
     }
