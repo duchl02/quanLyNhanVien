@@ -1,8 +1,9 @@
 package quanLyNhanVien;
 
-import java.util.Map;
 import java.util.NoSuchElementException;
 import static java.util.Objects.requireNonNull;
+
+import java.util.HashMap;
 
 public class CustomMap<K, V> {
     private class Node<K, V> {
@@ -25,7 +26,7 @@ public class CustomMap<K, V> {
             this.key = key;
         }
 
-        public void setPrev(Node prev) {
+        public void setPrev(Node<K, V> prev) {
             this.prev = prev;
         };
 
@@ -45,11 +46,11 @@ public class CustomMap<K, V> {
         public Node() {
         }
 
-        public Node(K key, V value) {
-            this.key = key;
-            this.value = value;
-            this.prev = prev;
-        }
+        // public Node(K key, V value) {
+        // this.key = key;
+        // this.value = value;
+        // this.prev = prev;
+        // }
 
     }
 
@@ -87,9 +88,9 @@ public class CustomMap<K, V> {
 
     public V get(K key) {
         for (Node<K, V> currentNode = node; currentNode != null; currentNode = currentNode.prev) {
-            if (key.equals(n.key)) {
-                System.out.println(n.value);
-                return (V) n.value;
+            if (key.equals(currentNode.key)) {
+                System.out.println(currentNode.value);
+                return (V) currentNode.value;
             }
         }
         return null;
@@ -102,8 +103,8 @@ public class CustomMap<K, V> {
                 currentNode.prev = currentNode.prev.prev;
                 return (V) currentNode.prev;
             }
-            if (currentNode.prev == null && currentNode.key == key) {
-                node = null;
+            if (currentNode.prev != null && currentNode.key == key) {
+                node = currentNode.getPrev();
                 return (V) currentNode;
             }
         }
@@ -132,10 +133,10 @@ public class CustomMap<K, V> {
         map.add(2, "222");
         map.add(3, "333");
         // map.get(1);
-        map.remove(2);
-        // map.display();
+        map.remove(1);
+        map.display();
         // map.remove(1);
-        System.out.println(map);
+        // System.out.println(map);
         // map.remove(1);
         // System.out.println(map);
     }
