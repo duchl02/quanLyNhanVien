@@ -3,7 +3,6 @@ package quanLyNhanVien;
 import java.util.NoSuchElementException;
 import static java.util.Objects.requireNonNull;
 
-import java.util.HashMap;
 
 public class CustomMap<K, V> {
     private class Node<K, V> {
@@ -99,14 +98,19 @@ public class CustomMap<K, V> {
     V remove(K key) {
         requireNonNull(node);
         for (Node<K, V> currentNode = node; currentNode != null; currentNode = currentNode.prev) {
+            if (currentNode.prev == null && currentNode.key == key) {
+                node = null;
+                return (V) currentNode.getValue();
+            }
             if (currentNode.prev != null && currentNode.prev.key == key) {
                 currentNode.prev = currentNode.prev.prev;
-                return (V) currentNode.prev;
+                return (V) currentNode.prev.getValue();
             }
             if (currentNode.prev != null && currentNode.key == key) {
                 node = currentNode.getPrev();
-                return (V) currentNode;
+                return (V) currentNode.getValue();
             }
+            
         }
         return null;
     }

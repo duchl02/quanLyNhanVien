@@ -64,6 +64,9 @@ public class CustomQueue<E> {
         return node;
     }
 
+    /**
+     * @return
+     */
     public E remove() {
         requireNonNull(head);
         Node<E> node = head;
@@ -71,6 +74,9 @@ public class CustomQueue<E> {
         return node.getData();
     }
 
+    /**
+     * @param index
+     */
     public void deleteNodeAt(int index) {
         Node<E> node = head;
         for (int i = 0; i < index - 1; i++) {
@@ -79,6 +85,10 @@ public class CustomQueue<E> {
         node.setNextNode(node.getNextNode().getNextNode());
     }
 
+    /**
+     * @param index
+     * @return
+     */
     public Node<E> getNodeAt(int index) {
         Node<E> node = head;
         for (int i = 0; i < index - 1; i++) {
