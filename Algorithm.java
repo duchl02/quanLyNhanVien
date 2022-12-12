@@ -13,19 +13,19 @@ public class Algorithm {
     }
 
     // tim kiem nhi phan
-    int binarySearch(int a[], int n, int x) {
-        int left = 0, right = n - 1, mid;
-        do {
-            mid = (left + right) / 2;
-            if (a[mid] == x) {
-                return mid;
-            } else if (a[mid] <= x){
-                left = mid + 1;}
-            else{
-                right = mid - 1;}
-        } while (left <= right);
-        return -1;
-    }
+    // int binarySearch(int a[], int n, int x) {
+    //     int left = 0, right = n - 1, mid;
+    //     do {
+    //         mid = (left + right) / 2;
+    //         if (a[mid] == x) {
+    //             return mid;
+    //         } else if (a[mid] <= x){
+    //             left = mid + 1;}
+    //         else{
+    //             right = mid - 1;}
+    //     } while (left <= right);
+    //     return -1;
+    // }
 
     // tim kiem noi suy
     int interpolationSearch(int a[], int n, int x) {
@@ -103,7 +103,6 @@ public class Algorithm {
         int i = (low - 1);
   
         for (int j = low; j <= high - 1; j++) {
-  
             // If current element is smaller
             // than the pivot
             if (arr[j] < pivot) {
@@ -113,6 +112,7 @@ public class Algorithm {
                 i++;
                 swap(arr, i, j);
             }
+            printArray(arr);
         }
         swap(arr, i + 1, high);
         return (i + 1);
@@ -173,6 +173,7 @@ public class Algorithm {
     }
     void msort(int arr[], int l, int r) {
         if (l < r) {
+            printArray(arr);
 
             // Tìm điểm chính giữa
             int m = (l + r) / 2;
@@ -238,13 +239,13 @@ public class Algorithm {
 
 
     public static void main(String[] args) {
-        int newArray[] = { 6, 7, 5, 4, 3, 9, 2, 8, 1 };
+        int newArray[] = { 3,1,2,5,7 };
         // int newArray[] = {1,2,3,4,5,6,7,8,9};
         int length = newArray.length;
 
         printArray(newArray);
         Algorithm ob = new Algorithm();
-        ob.quickSort(newArray,0, length - 1);
+        ob.msort(newArray,0, length - 1);
         printArray(newArray);
 
         // System.out.println(ob.interpolationSearch(newArray, newArray.length, 6));
